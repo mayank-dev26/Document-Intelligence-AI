@@ -272,6 +272,3 @@ Ollama keeps running on your computer (so it can use the GPU); the containers re
 - **Single user, single computer**: there are no accounts or access control; it is designed to run on the machine that holds the documents.
 - **Long documents** take a while to be read in full for summaries (roughly 15–20 seconds per 10 pages on an RTX 5080). Detail questions work as soon as a document is *Ready*.
 
-## License
-
-[MIT](LICENSE). The bundled fonts (IBM Plex Sans, Source Serif 4) are under the SIL Open Font License; see `ui/static/fonts/`.
