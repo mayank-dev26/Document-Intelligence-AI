@@ -3,7 +3,7 @@
 [![CI](https://github.com/YOUR-GITHUB-USERNAME/offline-document-intelligence/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR-GITHUB-USERNAME/offline-document-intelligence/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.12%20%7C%203.13-blue)
 ![Runs offline](https://img.shields.io/badge/runs-100%25%20offline-1F7A5A)
-[![License: MIT](https://img.shields.io/badge/license-MIT-lightgrey)](LICENSE)
+
 
 **Private, offline question answering over your own documents.** Upload PDFs, Word files or text, then look up details, ask for summaries and key points, or brainstorm ideas, all strictly from your documents, with the exact source lines highlighted on the page. If the answer isn't in your documents, the app says so instead of guessing.
 
