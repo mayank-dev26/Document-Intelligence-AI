@@ -1,0 +1,64 @@
+# UI theme: navy text; yellow is reserved for highlighted evidence.
+# Fonts are bundled in ui/static/fonts, so the interface makes no internet requests.
+[server]
+enableStaticServing = true
+maxUploadSize = 50
+
+[client]
+toolbarMode = "minimal"
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+base = "light"
+primaryColor = "#1B2A41"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F4F6F9"
+textColor = "#1B2A41"
+linkColor = "#1B2A41"
+greenColor = "#1F7A5A"
+orangeColor = "#B4690E"
+borderColor = "#E3E7ED"
+showWidgetBorder = true
+showSidebarBorder = true
+baseRadius = "0.5rem"
+baseFontSize = 15
+paddingTop = "3.5rem"
+font = "IBMPlexSans, sans-serif"
+headingFont = "IBMPlexSans, sans-serif"
+headingFontWeights = [600, 600, 600, 600, 600, 600]
+
+[[theme.fontFaces]]
+family = "IBMPlexSans"
+url = "app/static/fonts/ibm-plex-sans-latin-400-normal.woff2"
+weight = 400
+style = "normal"
+
+[[theme.fontFaces]]
+family = "IBMPlexSans"
+url = "app/static/fonts/ibm-plex-sans-latin-500-normal.woff2"
+weight = 500
+style = "normal"
+
+[[theme.fontFaces]]
+family = "IBMPlexSans"
+url = "app/static/fonts/ibm-plex-sans-latin-600-normal.woff2"
+weight = 600
+style = "normal"
+
+[[theme.fontFaces]]
+family = "SourceSerif4"
+url = "app/static/fonts/source-serif-4-latin-400-normal.woff2"
+weight = 400
+style = "normal"
+
+[[theme.fontFaces]]
+family = "SourceSerif4"
+url = "app/static/fonts/source-serif-4-latin-600-normal.woff2"
+weight = 600
+style = "normal"
+
+[theme.sidebar]
+backgroundColor = "#F4F6F9"
+secondaryBackgroundColor = "#FFFFFF"

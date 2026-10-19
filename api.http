@@ -1,0 +1,43 @@
+### Try the API from VS Code with the "REST Client" extension (click "Send Request").
+@api = http://localhost:8000
+
+### Status: AI engine and documents
+GET {{api}}/health
+
+### Upload a document (returns immediately; it's read in the background)
+POST {{api}}/documents
+Content-Type: multipart/form-data; boundary=b
+
+--b
+Content-Disposition: form-data; name="files"; filename="my_document.pdf"
+Content-Type: application/pdf
+
+< ./path/to/my_document.pdf
+--b--
+
+### List documents and their status (processing / ready / failed)
+GET {{api}}/documents
+
+### Ask a question
+POST {{api}}/query
+Content-Type: application/json
+
+{"question": "What is the notice period?"}
+
+### Ask about one document only (use a doc_id from the list above)
+POST {{api}}/query
+Content-Type: application/json
+
+{"question": "What is the notice period?", "doc_ids": ["paste-doc-id-here"]}
+
+### A follow-up question (earlier turns are sent as history)
+POST {{api}}/query
+Content-Type: application/json
+
+{"question": "Does that change during probation?", "history": [{"question": "What is the notice period?", "answer": "The notice period is 30 days."}]}
+
+### Summary of the whole document, streamed as it is written (one JSON event per line)
+POST {{api}}/query/stream
+Content-Type: application/json
+
+{"question": "Summarize the key points of this document"}

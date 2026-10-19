@@ -1,0 +1,53 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "API (FastAPI)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": ["app.api.main:app", "--port", "8000"],
+      "cwd": "${workspaceFolder}",
+      "env": { "PYTHONPATH": "${workspaceFolder}" },
+      "justMyCode": true
+    },
+    {
+      "name": "UI (Streamlit)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "streamlit",
+      "args": ["run", "ui/streamlit_app.py", "--server.port", "8501"],
+      "cwd": "${workspaceFolder}",
+      "env": { "PYTHONPATH": "${workspaceFolder}" }
+    },
+    {
+      "name": "Download models (one time)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/download_models.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Benchmark (your documents)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "evaluation.run_eval",
+      "args": ["--docs", "${input:docsFolder}", "--dataset", "${input:datasetFile}"],
+      "cwd": "${workspaceFolder}",
+      "env": { "PYTHONPATH": "${workspaceFolder}" },
+      "console": "integratedTerminal"
+    }
+  ],
+  "inputs": [
+    { "id": "docsFolder", "type": "promptString", "description": "Folder with your test documents" },
+    { "id": "datasetFile", "type": "promptString", "description": "Questions file (.jsonl)" }
+  ],
+  "compounds": [
+    {
+      "name": "API + UI",
+      "configurations": ["API (FastAPI)", "UI (Streamlit)"],
+      "stopAll": true
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run tests",
+      "type": "shell",
+      "command": "${command:python.interpreterPath} -m pytest -q",
+      "group": { "kind": "test", "isDefault": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "Download models (one time)",
+      "type": "shell",
+      "command": "${command:python.interpreterPath} scripts/download_models.py",
+      "problemMatcher": []
+    },
+    {
+      "label": "Docker: up",
+      "type": "shell",
+      "command": "docker compose up --build",
+      "problemMatcher": []
+    }
+  ]
+}

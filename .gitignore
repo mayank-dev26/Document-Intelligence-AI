@@ -1,0 +1,31 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Secrets and local settings
+.env
+
+# Runtime data: uploaded documents, text and vectors (wiped automatically unless KEEP_DOCUMENTS=true)
+data/
+
+# Local models (downloaded with scripts/download_models.py, ~250 MB)
+models/
+
+# Benchmark questions and reports quote your documents, so they stay on your computer
+evaluation/datasets/*
+!evaluation/datasets/.gitkeep
+reports/*
+!reports/.gitkeep
+
+# OS and editor clutter
+.DS_Store
+Thumbs.db
+*.log

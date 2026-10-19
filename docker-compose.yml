@@ -1,0 +1,43 @@
+# docker compose up --build   ->  open http://localhost:8501
+# Ollama runs on your computer (not in Docker) so it can use your GPU directly.
+services:
+  qdrant:
+    image: qdrant/qdrant:latest          # pin a version (e.g. qdrant/qdrant:v1.x.y) for production
+    environment:
+      QDRANT__TELEMETRY_DISABLED: "true" # no usage statistics leave the machine
+    volumes: ["qdrant-data:/qdrant/storage"]
+    restart: unless-stopped
+
+  api:
+    build: .
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      QDRANT_URL: http://qdrant:6333
+      OLLAMA_URL: http://host.docker.internal:11434
+    extra_hosts:
+      - "host.docker.internal:host-gateway"   # lets the container reach Ollama on this computer (Linux)
+    ports: ["127.0.0.1:8000:8000"]            # only reachable from this computer
+    depends_on: [qdrant]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+    restart: unless-stopped
+
+  ui:
+    build: .
+    command: ["streamlit", "run", "ui/streamlit_app.py", "--server.port", "8501", "--server.address", "0.0.0.0"]
+    environment:
+      API_URL: http://api:8000
+    ports: ["127.0.0.1:8501:8501"]            # only reachable from this computer
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  qdrant-data:

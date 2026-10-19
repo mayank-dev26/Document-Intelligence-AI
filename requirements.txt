@@ -1,0 +1,25 @@
+# Everything runs on this computer. The language model is served by Ollama (installed separately).
+
+# --- API ---
+fastapi>=0.115
+uvicorn[standard]>=0.30
+python-multipart>=0.0.9
+pydantic>=2.7
+pydantic-settings>=2.3
+httpx>=0.27              # talks to Ollama on localhost
+
+# --- Reading documents ---
+pymupdf>=1.24            # PDF text, page geometry, highlighted page previews
+python-docx>=1.1         # Word (.docx) files
+
+# --- Search ---
+qdrant-client>=1.12      # vector database (embedded on disk, or a server in Docker)
+rank-bm25>=0.2.2         # keyword search
+numpy>=1.26
+sentence-transformers>=3.0   # local embedding + reranking models (loaded from ./models)
+
+# --- Interface ---
+streamlit>=1.50
+
+# --- Development ---
+pytest>=8.2

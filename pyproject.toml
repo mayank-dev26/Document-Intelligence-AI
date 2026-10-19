@@ -1,0 +1,20 @@
+[project]
+name = "offline-document-intelligence"
+version = "2.1.0"
+description = "Private, offline document question answering with verified sources (hybrid RAG + local LLM via Ollama)"
+requires-python = ">=3.10"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "YOUR NAME" }]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "C4", "PIE"]
+ignore = ["E501", "B008", "B905", "SIM905"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning", "ignore::FutureWarning"]
